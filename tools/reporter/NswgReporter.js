@@ -176,20 +176,20 @@ class NswgReporter {
   }
 
   formatDate (date) {
-    if (!date) {
-      date = null
+    if (!date){
+      return date
+    } else {
+      const myDate = new Date(date)
+      const month = myDate.getMonth() + 1 < 10
+        ? `0${myDate.getMonth() + 1}`
+        : myDate.getMonth() + 1
+      const dayOfMonth = myDate.getDate() < 10
+        ? `0${myDate.getDate()}`
+        : myDate.getDate()
+      const formattedDate = `${myDate.getFullYear()}-${month}-${dayOfMonth}`
+
+      return formattedDate
     }
-
-    const myDate = new Date(date)
-    const month = myDate.getMonth() + 1 < 10
-      ? `0${myDate.getMonth() + 1}`
-      : myDate.getMonth() + 1
-    const dayOfMonth = myDate.getDate() < 10
-      ? `0${myDate.getDate()}`
-      : myDate.getDate()
-    const formattedDate = `${myDate.getFullYear()}-${month}-${dayOfMonth}`
-
-    return formattedDate
   }
 }
 
