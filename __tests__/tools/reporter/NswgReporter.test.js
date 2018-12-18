@@ -1,6 +1,6 @@
 'use strict'
 
-const NswgReporter = require("./NswgReporter")
+const NswgReporter = require("../../../tools/reporter/NswgReporter")
 
 const report = { 
   data: { 
@@ -59,6 +59,7 @@ const report = {
   }
 
 const reporter = new NswgReporter({report})
+let wgReport = {}
 
 describe("Testing NswgReporter", ()=> {
   test("Testing getTitle", () => {
@@ -107,8 +108,11 @@ describe("Testing NswgReporter", ()=> {
     return Promise
       .resolve().then(() => {
         return reporter.get()
-      }).then((wgReport)=> {
+      }).then((rep)=> {
+        wgReport = rep
         expect(wgReport).toEqual({"author": {"name": "asdfghjkl", "username": "asdfghjkjl", "website": null}, "coordinating_vendor": null, "created_at": "2018-07-13", "cves": null, "cvss_score": "[TBD]", "cvss_vector": "[TBD]", "id": 0,"module_name": "[TBD]", "overview": "overview", "patched_versions": null, "publish_date": "2018-08-22", "recommendation": "update [TBD] to null or higher", "references": ["https://hackerone.com/reports/123456"], "title": "[TBD]", "updated_at": null, "vulnerable_versions": null})   
       })
   })
 })
+
+module.exports = reporter

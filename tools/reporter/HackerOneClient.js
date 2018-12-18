@@ -34,7 +34,6 @@ class HackerOneClient {
       data: reportData.data.data,
       reporter: reportUserData.data
     }
-
     return result
   }
 
